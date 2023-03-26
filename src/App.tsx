@@ -1,6 +1,16 @@
 import React from 'react';
 import './App.scss';
+import { Routes, Route } from 'react-router-dom';
 
-export const App: React.FC = () => {
-  return <div className="starter">starter</div>;
-};
+// Pages
+import { NotFoundPage } from './pages/NotFoundPage';
+import { ProductsPage } from './pages/ProductsPage';
+
+export const App: React.FC = () => (
+  <>
+    <Routes>
+      <Route path="/" element={<ProductsPage />} />
+      <Route path="*" element={<NotFoundPage />} />
+    </Routes>
+  </>
+);
