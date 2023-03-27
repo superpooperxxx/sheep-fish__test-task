@@ -1,0 +1,49 @@
+* {
+  box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+button,
+input,
+select,
+ul {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+button,
+select {
+  background: none;
+  cursor: pointer;
+}
+
+label {
+  cursor: pointer;
+}
+
+input,
+select {
+  outline: none;
+  background: none;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+ul {
+  list-style: none;
+}
+
+input[type='button'] {
+  cursor: pointer;
+}
