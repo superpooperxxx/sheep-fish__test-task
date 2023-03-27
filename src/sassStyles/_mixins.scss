@@ -1,0 +1,28 @@
+@mixin onTablet {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin onLandscape {
+  @media (orientation: landscape) {
+    @content;
+  }
+}
+
+@mixin icon($size, $img) {
+  content: '';
+  display: inline-block;
+  width: $size;
+  height: $size;
+
+  background-image: url($img);
+  background-size: contain;
+  background-repeat: no-repeat;
+}

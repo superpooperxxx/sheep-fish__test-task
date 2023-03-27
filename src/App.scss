@@ -1,0 +1,9 @@
+@import './sassStyles/reset';
+
+// Blocks
+@import './sassStyles/blocks/page';
+@import './sassStyles/blocks/container';
+
+:root {
+  font-family: 'Roboto', sans-serif;
+}
