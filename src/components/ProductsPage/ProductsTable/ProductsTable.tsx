@@ -137,7 +137,9 @@ export const ProductsTable: React.FC = React.memo(() => {
 
   return (
     <>
-      {errorMessage && <div>{errorMessage}</div>}
+      {errorMessage && (
+        <div className="products-table__error-message">{errorMessage}</div>
+      )}
       {itemsLoaded && !errorMessage && (
         <div className="products-table">
           <DataGrid
@@ -165,7 +167,7 @@ export const ProductsTable: React.FC = React.memo(() => {
           })}
           onClick={() => handleLoadMore()}
         >
-          Load more
+          {errorMessage ? 'Try again' : 'Load more'}
         </button>
       )}
     </>
