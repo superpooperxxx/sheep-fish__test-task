@@ -9,8 +9,14 @@ import { ProductsPage } from './pages/ProductsPage';
 export const App: React.FC = () => (
   <>
     <Routes>
-      <Route path="/" element={<ProductsPage />} />
-      <Route path="*" element={<NotFoundPage />} />
+      <Route
+        path="/"
+        element={<ProductsPage />}
+      />
+      <Route
+        path="*"
+        element={<NotFoundPage />}
+      />
     </Routes>
   </>
 );
