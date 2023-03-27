@@ -29,5 +29,5 @@ function request<T>(
 export const client = {
   get: <T>(url: string) => request<T>(url),
   post: <T>(url: string, data: any) => request<T>(url, 'POST', data),
-  delete: (url: string) => request(url, 'DELETE'),
+  delete: <T>(url: string) => request<T>(url, 'DELETE'),
 };

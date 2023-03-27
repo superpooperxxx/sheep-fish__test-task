@@ -14,10 +14,10 @@
 }
 
 .products-page {
-  padding-top: 20px;
+  padding: 20px 0;
 
   @include onTablet {
-    padding-top: 40px;
+    padding: 40px 0;
   }
 
   // HEADER
@@ -98,16 +98,12 @@
 
   // SEARCH BAR AND FILTER BUTTON
 
-  &__search-and-filter {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-  }
-
   // SEARCH BAR
   &__form {
     flex-grow: 1;
+    margin-bottom: 25px;
   }
+
   &__search-label {
     display: flex;
     align-items: center;
@@ -164,42 +160,6 @@
 
     @include onTablet {
       font-size: 24px;
-    }
-  }
-
-  // FILTER BUTTON
-  &__filter-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    width: 45px;
-    height: 45px;
-
-    &::before {
-      @include icon(20px, '../static/icons/icon__filter.png');
-
-      @include onTablet {
-        width: 22px;
-        height: 22px;
-      }
-    }
-
-    border: 1px solid $color__accent;
-    border-radius: 50%;
-
-    transition: background-color 0.3s, border-color 0.3s;
-
-    @include onTablet {
-      width: 48px;
-      height: 48px;
-    }
-
-    @include onDesktop {
-      &:hover {
-        background-color: $color__accent;
-        border-color: #fff;
-      }
     }
   }
 }

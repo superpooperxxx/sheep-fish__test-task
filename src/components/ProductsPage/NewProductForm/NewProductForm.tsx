@@ -33,8 +33,6 @@ export const NewProductForm: React.FC<Props> = ({ showForm }) => {
       onSubmit: submitHandler,
     });
 
-  window.console.log(values);
-
   return (
     <form
       className="new-product-form page__new-product-form"

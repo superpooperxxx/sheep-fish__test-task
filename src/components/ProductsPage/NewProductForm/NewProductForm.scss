@@ -104,8 +104,12 @@
 
   // SEND
   &__send {
+    display: block;
     width: 100%;
     height: 40px;
+
+    max-width: 300px;
+    margin: 0 auto;
 
     font-size: 13px;
     font-weight: 700;
