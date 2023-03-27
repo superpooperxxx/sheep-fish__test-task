@@ -11,6 +11,9 @@ export const ProductsPage: React.FC = () => {
         <main className="products-page__main">
           <div className="products-page__search-and-filter">
             <ProductSearch />
+            <button type="button" className="products-page__filter-btn">
+              {' '}
+            </button>
           </div>
           <div>Products</div>
           <div>Pagination btn</div>

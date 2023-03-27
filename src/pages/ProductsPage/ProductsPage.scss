@@ -26,7 +26,7 @@
     justify-content: space-between;
     align-items: center;
 
-    margin-bottom: 10px;
+    margin-bottom: 15px;
     padding: 15px;
 
     background-color: $color__page-header;
@@ -96,7 +96,18 @@
     }
   }
 
-  // FORM
+  // SEARCH BAR AND FILTER BUTTON
+
+  &__search-and-filter {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  // SEARCH BAR
+  &__form {
+    flex-grow: 1;
+  }
   &__search-label {
     display: flex;
     align-items: center;
@@ -153,6 +164,42 @@
 
     @include onTablet {
       font-size: 24px;
+    }
+  }
+
+  // FILTER BUTTON
+  &__filter-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 45px;
+    height: 45px;
+
+    &::before {
+      @include icon(20px, '../static/icons/icon__filter.png');
+
+      @include onTablet {
+        width: 22px;
+        height: 22px;
+      }
+    }
+
+    border: 1px solid $color__accent;
+    border-radius: 50%;
+
+    transition: background-color 0.3s, border-color 0.3s;
+
+    @include onTablet {
+      width: 48px;
+      height: 48px;
+    }
+
+    @include onDesktop {
+      &:hover {
+        background-color: $color__accent;
+        border-color: #fff;
+      }
     }
   }
 }

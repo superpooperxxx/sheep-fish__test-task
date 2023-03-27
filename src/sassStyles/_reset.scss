@@ -20,10 +20,6 @@ select {
   cursor: pointer;
 }
 
-label {
-  cursor: pointer;
-}
-
 input,
 select {
   outline: none;
@@ -44,6 +40,7 @@ ul {
   list-style: none;
 }
 
-input[type='button'] {
+input[type='button'],
+label {
   cursor: pointer;
 }
