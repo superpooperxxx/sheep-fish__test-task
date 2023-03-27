@@ -1,15 +1,24 @@
 import React from 'react';
+import { Header as ProductPageHeader } from '../../components/ProductsPage/Header';
+import { ProductSearch } from '../../components/ProductsPage/ProductSearch';
 import './ProductsPage.scss';
 
 export const ProductsPage: React.FC = () => {
   return (
-    <main className="products-page">
+    <div className="products-page">
       <div className="container">
-        <div>Header: Title + New Product Btn</div>
-        <div>Search + Filter btn</div>
-        <div>Products</div>
-        <div>Pagination btn</div>
+        <ProductPageHeader />
+        <main className="products-page__main">
+          <div className="products-page__search-and-filter">
+            <ProductSearch />
+            <button type="button" className="products-page__filter-btn">
+              {' '}
+            </button>
+          </div>
+          <div>Products</div>
+          <div>Pagination btn</div>
+        </main>
       </div>
-    </main>
+    </div>
   );
 };
