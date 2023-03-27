@@ -1,22 +1,41 @@
 /* eslint-disable object-curly-newline */
 import React from 'react';
+import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
+import { actions as productsActions } from '../../../features/products';
 import './NewProductForm.scss';
 import { FormItem } from './FormItem';
 import { basicSchema } from './schemas';
 import { StarsRating } from './StarsRating';
 import { YearSelect } from './YearSelect';
+import { createProduct } from '../../../api/products';
+// import { useAppSelector } from '../../../app/hooks';
 
 type Props = {
   showForm: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
+type FormState = {
+  title: string;
+  author: string;
+  year: number;
+  rating: number;
+};
+
 export const NewProductForm: React.FC<Props> = ({ showForm }) => {
-  const submitHandler = () => {
-    window.console.log('Submitted');
-    // Отправляю запрос
-    // Ответ диспатчу в redux
-    // Очистка и закрытие формы
+  // const [isCreating, setIsCreating] = useState(false);
+  const dispatch = useDispatch();
+  // const products = useAppSelector((state) => state.products);
+
+  const submitHandler = (data: FormState) => {
+    const { title, rating } = data;
+
+    createProduct({ title, rating: +rating })
+      .then((res) => {
+        dispatch(productsActions.addOne(res));
+      })
+      .catch((error) => window.console.log(error));
+
     showForm(false);
   };
 
