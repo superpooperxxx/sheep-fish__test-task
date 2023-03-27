@@ -23,6 +23,21 @@
     }
   }
 
+  &__error-message {
+    margin-bottom: 50px;
+
+    font-size: 20px;
+    text-align: center;
+
+    @include onTablet {
+      font-size: 25px;
+    }
+
+    @include onDesktop {
+      font-size: 35px;
+    }
+  }
+
   &__load-more {
     display: block;
     width: 100%;
