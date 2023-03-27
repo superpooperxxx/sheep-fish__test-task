@@ -1,0 +1,51 @@
+@import '../../../sassStyles/mixins';
+@import '../../../sassStyles/colors';
+@import '../../../sassStyles/keyframes';
+
+.products-table {
+  &__table-head {
+    background: $color__accent;
+  }
+
+  &__delete {
+    @include icon(30px, '../static/icons/icon__cross.png');
+
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+
+    &--active {
+      @include icon(30px, '../static/icons/icon__loader.png');
+
+      animation: rotate 2s infinite;
+    }
+  }
+
+  &__load-more {
+    display: block;
+    width: 100%;
+    height: 40px;
+
+    max-width: 300px;
+    margin: 0 auto;
+
+    font-size: 13px;
+    font-weight: 700;
+    color: $color__text--main;
+
+    background-color: $color__accent;
+    border-radius: 20px;
+
+    transition: background-color 0.3s;
+
+    &--loading {
+      display: none;
+    }
+
+    &:hover {
+      background-color: $color__accent--hover;
+    }
+  }
+}
