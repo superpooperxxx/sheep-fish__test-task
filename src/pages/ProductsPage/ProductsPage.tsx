@@ -12,7 +12,7 @@ export const ProductsPage: React.FC = () => {
     <>
       {isNewProductOpened && (
         <Modal>
-          <NewProductForm setFormOpened={setIsNewProductOpened} />
+          <NewProductForm showForm={setIsNewProductOpened} />
         </Modal>
       )}
       <div className="products-page">

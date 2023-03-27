@@ -8,16 +8,16 @@ import { StarsRating } from './StarsRating';
 import { YearSelect } from './YearSelect';
 
 type Props = {
-  setFormOpened: React.Dispatch<React.SetStateAction<boolean>>;
+  showForm: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-export const NewProductForm: React.FC<Props> = ({ setFormOpened }) => {
+export const NewProductForm: React.FC<Props> = ({ showForm }) => {
   const submitHandler = () => {
     window.console.log('Submitted');
     // Отправляю запрос
     // Ответ диспатчу в redux
     // Очистка и закрытие формы
-    setFormOpened(false);
+    showForm(false);
   };
 
   // eslint-disable-next-line operator-linebreak
@@ -47,7 +47,7 @@ export const NewProductForm: React.FC<Props> = ({ setFormOpened }) => {
           type="button"
           className="new-product-form__close"
           aria-label="click to close the form"
-          onClick={() => setFormOpened(false)}
+          onClick={() => showForm(false)}
         />
       </div>
 

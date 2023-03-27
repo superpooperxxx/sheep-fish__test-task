@@ -4,7 +4,7 @@ type Props = {
   showForm: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
-export const Header: React.FC<Props> = ({ showForm }) => (
+export const Header: React.FC<Props> = React.memo(({ showForm }) => (
   <header className="products-page__header">
     <h1 className="products-page__title">Products</h1>
     <button
@@ -15,4 +15,4 @@ export const Header: React.FC<Props> = ({ showForm }) => (
       New Product
     </button>
   </header>
-);
+));

@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 
-export const ProductSearch: React.FC = () => (
+export const ProductSearch: React.FC = React.memo(() => (
   <form className="products-page__form">
     <label className="products-page__search-label">
       <div className="products-page__search-container">
@@ -13,4 +13,4 @@ export const ProductSearch: React.FC = () => (
       </div>
     </label>
   </form>
-);
+));
