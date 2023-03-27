@@ -1,5 +1,6 @@
 /* eslint-disable object-curly-newline */
 /* eslint-disable jsx-a11y/label-has-associated-control */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { ChangeEvent } from 'react';
 
 type Props = {

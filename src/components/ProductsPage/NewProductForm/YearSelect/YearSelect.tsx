@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable object-curly-newline */
 import React, { ChangeEvent } from 'react';
 import { years } from '../years';
