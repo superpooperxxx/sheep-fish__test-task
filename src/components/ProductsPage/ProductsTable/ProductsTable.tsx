@@ -39,7 +39,12 @@ export const ProductsTable: React.FC<Props> = React.memo(({ query }) => {
   };
 
   useEffect(() => {
-    handleLoad();
+    if (!products.length) {
+      handleLoad();
+    } else {
+      setIsLoading(false);
+      setItemsLoaded(products.length);
+    }
   }, []);
 
   const handleRemove = (productId: number) => {
