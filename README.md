@@ -16,6 +16,7 @@
 ### Instruction
 
 - Clone this project to your computer and run <code>npm i</code> to install all dependencies
+- Run <code>npm start</code> to start live server.
 
 ### Screenshot
 
