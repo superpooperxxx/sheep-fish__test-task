@@ -13,7 +13,7 @@
   background-color: $color__modal-form;
   border-radius: 6px;
 
-  overflow: hidden;
+  // overflow: hidden;
 
   &__loader {
     position: absolute;
@@ -27,6 +27,7 @@
     align-items: center;
 
     background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 6px;
 
     &::before {
       @include icon(40px, '../static/icons/icon__loader.png');
