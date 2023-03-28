@@ -1,6 +1,6 @@
 /* eslint-disable object-curly-newline */
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
 import { actions as productsActions } from '../../../features/products';
@@ -28,20 +28,32 @@ export const NewProductForm: React.FC<Props> = ({ showForm }) => {
   const [isSuccessSubmit, setIsSuccessSubmit] = useState(false);
   const [isDataSending, setIsDataSending] = useState(false);
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const submitHandler = (data: FormState) => {
     setIsDataSending(true);
     const { title, rating } = data;
 
-    createProduct({ title, rating: +rating })
+    const dataForApi = {
+      title,
+      description: '',
+      price: 0,
+      discountPercentage: 0,
+      rating: +rating,
+      stock: 0,
+      brand: '',
+      category: '',
+      thumbnail: '',
+      images: [''],
+    };
+
+    createProduct(dataForApi)
       .then((res) => {
         dispatch(productsActions.addOne(res));
         setIsSuccessSubmit(true);
       })
-      .catch(() => {
-        navigate('/not-found');
-      })
+      // eslint-disable-next-line no-alert
+      .catch(() => window.alert('something went wrong'))
       .finally(() => {
         setIsDataSending(false);
       });

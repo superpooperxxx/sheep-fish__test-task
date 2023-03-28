@@ -150,7 +150,7 @@ export const ProductsTable: React.FC<Props> = React.memo(({ query }) => {
 
       return normTitle.includes(normQuery) || normCategory.includes(normQuery);
     });
-  }, [query, itemsLoaded]);
+  }, [products, query, itemsLoaded]);
 
   return (
     <>
