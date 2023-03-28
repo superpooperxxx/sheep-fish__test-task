@@ -3,12 +3,12 @@
 ## Table of contents
 
 - [Overview](#overview)
-  - [The challenge](#instruction)
+  - [Instruction](#instruction)
   - [Screenshot](#screenshot)
   - [Links](#links)
 - [My process](#my-process)
   - [Built with](#built-with)
-  - [What I learned](#description)
+  - [Description](#description)
 - [Author](#author)
 
 ## Overview
