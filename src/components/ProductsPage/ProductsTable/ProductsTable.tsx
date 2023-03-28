@@ -23,12 +23,13 @@ export const ProductsTable: React.FC = React.memo(() => {
     loadProducts(limit, skip)
       .then((res) => {
         dispatch(productsActions.addMultiple(res.products));
-        setIsLoading(false);
         setItemsLoaded((current) => Number(current) + res.limit);
         setProductTotal(res.total);
       })
       .catch(() => {
         setErrorMessage('Oooops, something went wrong...');
+      })
+      .finally(() => {
         setIsLoading(false);
       });
   };
@@ -43,11 +44,13 @@ export const ProductsTable: React.FC = React.memo(() => {
     removeProduct(productId)
       .then((res) => {
         dispatch(productsActions.remove(res.id));
-        setProductToRemove(null);
       })
       .catch(() => {
         // eslint-disable-next-line no-alert
         alert('Something went wrong. Try to delete again !');
+      })
+      .finally(() => {
+        setProductToRemove(null);
       });
   };
 
