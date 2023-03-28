@@ -10,7 +10,11 @@ import { loadProducts, removeProduct } from '../../../api/products';
 import './ProductsTable.scss';
 import { Loader } from '../../Loader';
 
-export const ProductsTable: React.FC = React.memo(() => {
+type Props = {
+  query: string;
+};
+
+export const ProductsTable: React.FC<Props> = React.memo(({ query }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
   const [productToRemove, setProductToRemove] = useState<number | null>(null);
@@ -138,6 +142,16 @@ export const ProductsTable: React.FC = React.memo(() => {
     [productToRemove],
   );
 
+  const productsToShow = useMemo(() => {
+    return products.filter((product) => {
+      const normTitle = product.title.toLowerCase();
+      const normCategory = product.category.toLowerCase();
+      const normQuery = query.toLowerCase();
+
+      return normTitle.includes(normQuery) || normCategory.includes(normQuery);
+    });
+  }, [query, itemsLoaded]);
+
   return (
     <>
       {errorMessage && (
@@ -154,7 +168,7 @@ export const ProductsTable: React.FC = React.memo(() => {
                 display: 'none',
               },
             }}
-            rows={products}
+            rows={productsToShow}
             columns={columns}
             hideFooterPagination
             hideFooterSelectedRowCount
