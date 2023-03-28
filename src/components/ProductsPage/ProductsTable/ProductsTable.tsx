@@ -162,7 +162,7 @@ export const ProductsTable: React.FC = React.memo(() => {
       {itemsLoaded !== productsTotal && (
         <button
           type="button"
-          className={cn('products-table__load-more', {
+          className={cn('btn products-table__load-more', {
             'products-table__load-more--loading': isLoading,
           })}
           onClick={() => handleLoadMore()}

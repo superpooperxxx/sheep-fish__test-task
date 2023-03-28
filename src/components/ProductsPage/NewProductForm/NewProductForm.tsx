@@ -1,5 +1,6 @@
 /* eslint-disable object-curly-newline */
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useFormik } from 'formik';
 import { actions as productsActions } from '../../../features/products';
@@ -9,7 +10,7 @@ import { basicSchema } from './schemas';
 import { StarsRating } from './StarsRating';
 import { YearSelect } from './YearSelect';
 import { createProduct } from '../../../api/products';
-// import { useAppSelector } from '../../../app/hooks';
+import { SuccessModal } from '../../SuccessModal';
 
 type Props = {
   showForm: React.Dispatch<React.SetStateAction<boolean>>;
@@ -23,20 +24,27 @@ type FormState = {
 };
 
 export const NewProductForm: React.FC<Props> = ({ showForm }) => {
-  // const [isCreating, setIsCreating] = useState(false);
   const dispatch = useDispatch();
-  // const products = useAppSelector((state) => state.products);
+  const [isSuccessSubmit, setIsSuccessSubmit] = useState(false);
+  const [isDataSending, setIsDataSending] = useState(false);
+
+  const navigate = useNavigate();
 
   const submitHandler = (data: FormState) => {
+    setIsDataSending(true);
     const { title, rating } = data;
 
     createProduct({ title, rating: +rating })
       .then((res) => {
         dispatch(productsActions.addOne(res));
+        setIsSuccessSubmit(true);
       })
-      .catch((error) => window.console.log(error));
-
-    showForm(false);
+      .catch(() => {
+        navigate('/not-found');
+      })
+      .finally(() => {
+        setIsDataSending(false);
+      });
   };
 
   // eslint-disable-next-line operator-linebreak
@@ -53,80 +61,94 @@ export const NewProductForm: React.FC<Props> = ({ showForm }) => {
     });
 
   return (
-    <form
-      className="new-product-form page__new-product-form"
-      autoComplete="off"
-      onSubmit={handleSubmit}
-    >
-      <div className="new-product-form__header">
-        <h2 className="new-product-form__title">Add New Product</h2>
-        <input
-          type="button"
-          className="new-product-form__close"
-          aria-label="click to close the form"
-          onClick={() => showForm(false)}
-        />
-      </div>
+    <>
+      {isSuccessSubmit ? (
+        <SuccessModal showForm={showForm} />
+      ) : (
+        <form
+          className="new-product-form page__new-product-form"
+          autoComplete="off"
+          onSubmit={handleSubmit}
+        >
+          {isDataSending && (
+            <div
+              className="new-product-form__loader"
+              aria-label="sending data"
+            >
+              {' '}
+            </div>
+          )}
+          <div className="new-product-form__header">
+            <h2 className="new-product-form__title">Add New Product</h2>
+            <input
+              type="button"
+              className="new-product-form__close"
+              aria-label="click to close the form"
+              onClick={() => showForm(false)}
+            />
+          </div>
 
-      {/* Title */}
-      <FormItem
-        title="Title"
-        errorMessage={errors.title}
-        touched={touched.title}
-      >
-        <input
-          name="title"
-          type="text"
-          className="new-product-form__input"
-          placeholder="Title"
-          value={values.title}
-          onChange={handleChange}
-          onBlur={handleBlur}
-        />
-      </FormItem>
+          {/* Title */}
+          <FormItem
+            title="Title"
+            errorMessage={errors.title}
+            touched={touched.title}
+          >
+            <input
+              name="title"
+              type="text"
+              className="new-product-form__input"
+              placeholder="Title"
+              value={values.title}
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
+          </FormItem>
 
-      {/* Author */}
-      <FormItem
-        title="Author"
-        errorMessage={errors.author}
-        touched={touched.author}
-      >
-        <input
-          name="author"
-          type="text"
-          className="new-product-form__input"
-          placeholder="Author"
-          value={values.author}
-          onChange={handleChange}
-          onBlur={handleBlur}
-        />
-      </FormItem>
+          {/* Author */}
+          <FormItem
+            title="Author"
+            errorMessage={errors.author}
+            touched={touched.author}
+          >
+            <input
+              name="author"
+              type="text"
+              className="new-product-form__input"
+              placeholder="Author"
+              value={values.author}
+              onChange={handleChange}
+              onBlur={handleBlur}
+            />
+          </FormItem>
 
-      <div className="new-product-form__container">
-        {/* Year */}
-        <YearSelect
-          errorMessage={errors.year}
-          touched={touched.year}
-          selectedYear={values.year}
-          onChange={handleChange}
-        />
+          <div className="new-product-form__container">
+            {/* Year */}
+            <YearSelect
+              errorMessage={errors.year}
+              touched={touched.year}
+              selectedYear={values.year}
+              onChange={handleChange}
+            />
 
-        {/* Rating */}
-        <StarsRating
-          errorMessage={errors.rating}
-          touched={touched.rating}
-          rating={values.rating}
-          onChange={handleChange}
-        />
-      </div>
+            {/* Rating */}
+            <StarsRating
+              errorMessage={errors.rating}
+              touched={touched.rating}
+              rating={values.rating}
+              onChange={handleChange}
+            />
+          </div>
 
-      {/* Submit */}
-      <button
-        type="submit"
-        className="new-product-form__send"
-      >
-        Add New Product
-      </button>
-    </form>
+          {/* Submit */}
+          <button
+            type="submit"
+            className="btn new-product-form__submit"
+          >
+            Add New Product
+          </button>
+        </form>
+      )}
+    </>
   );
 };
