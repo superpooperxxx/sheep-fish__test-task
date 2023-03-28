@@ -8,6 +8,7 @@ import './ProductsPage.scss';
 
 export const ProductsPage: React.FC = () => {
   const [isNewProductOpened, setIsNewProductOpened] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
 
   return (
     <>
@@ -20,8 +21,11 @@ export const ProductsPage: React.FC = () => {
         <div className="container">
           <ProductPageHeader showForm={setIsNewProductOpened} />
           <main className="products-page__main">
-            <ProductSearch />
-            <ProductsTable />
+            <ProductSearch
+              query={searchQuery}
+              setQuery={setSearchQuery}
+            />
+            <ProductsTable query={searchQuery} />
           </main>
         </div>
       </div>
