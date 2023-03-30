@@ -30,6 +30,13 @@
 ## My process
 
 ### Built with
+<div>
+  <img width="40px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" />
+  <img width="40px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg" />
+  <img width="40px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" />
+  <img width="40px" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sass/sass-original.svg" />
+  <img width="40px" src="https://img.icons8.com/color/48/null/material-ui.png" />
+</div>
 
 - React, react-router
 - Redux, Redux-toolkit, react-redux
